@@ -1,0 +1,29 @@
+#newCardForm {
+  width: 400px;
+  .mat-dialog-content {
+    height: 170px;
+  .form-field {
+    width: 100%;
+    mat-form-field {
+      width: 100%;
+
+      img {
+        width: 45px;
+        position: absolute;
+        bottom: 3px;
+        right: 0px;
+      }
+    }
+
+    .child-field {
+      width: 125px;
+    }
+  }
+}
+  .action-btns {
+    .add-card {
+      padding: 8px;
+      width: 150px;
+    }
+  }
+}

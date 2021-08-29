@@ -1,0 +1,28 @@
+#wallet {
+  margin: 20px;
+  .card-container {
+    width: 70vw;
+    max-width: 600px;
+    border: 1px solid lightgrey;
+
+    .card {
+      margin: 15px;
+
+      app-card {
+        width: 100%;
+      }
+
+      .action-btns {
+        .add-new-card {
+          padding: 8px;
+          width: 150px;
+        }
+      }
+
+      .no-records-found {
+        width: 100%;
+        height: 70px;
+      }
+    }
+  }
+}

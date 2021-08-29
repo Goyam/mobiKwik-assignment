@@ -1,0 +1,22 @@
+<div id="wallet" fxLayout="column" fxLayoutAlign="center start" fxFlex>
+  <h1 class="heading">My Wallet</h1>
+  <div class="card-container">
+    <div class="card" fxLayout="column" fxLayoutAlign="center start" fxLayoutGap="20px" fxFlex>
+      <ng-container *ngIf="cards.length; else NoSavedCards">
+      <ng-container *ngFor="let card of cards">
+        <app-card [cardDetails] = "card" (removedCard)="onRemoveCard($event)" ></app-card>
+      </ng-container>
+    </ng-container>
+
+    <ng-template #NoSavedCards>
+      <div class="no-records-found" fxLayoutAlign="center center">
+        No Records Found
+      </div>
+    </ng-template>
+
+      <div class="action-btns">
+        <button class="add-new-card" mat-raised-button color="primary" (click)="addNewCard()">Add New Card</button>
+      </div>
+    </div>
+  </div>
+</div>

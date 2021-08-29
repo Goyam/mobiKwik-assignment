@@ -1,0 +1,34 @@
+<div
+  id="card"
+  fxLayout="row"
+  fxLayoutAlign="space-between center"
+  fxLayoutGap="10px"
+  fxFlex
+>
+  <div
+    class="card-details"
+    fxLayout="row"
+    fxLayoutAlign="space-between center"
+    fxFlex="70"
+  >
+    <div class="card-number" fxLayout="column" fxLayoutAlign="center start">
+      <div class="label">Debit Card Number</div>
+      <div class="number">{{ cardDetails.card_number | cardNumber }}</div>
+    </div>
+    <img *ngIf="cardDetails.card_number && cardDetails.card_number[0] !== '3'" src="assets/visa.png" />
+    <img
+      *ngIf="cardDetails.card_number && cardDetails.card_number[0] === '3'"
+      src="assets/american-express.png"
+    />
+  </div>
+  <div class="action-btns">
+    <button
+      class="remove"
+      mat-stroked-button
+      color="primary"
+      (click)="removeCard()"
+    >
+      Remove
+    </button>
+  </div>
+</div>

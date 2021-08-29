@@ -1,0 +1,91 @@
+<div id="newCardForm">
+  <div mat-dialog-title fxLayoutAlign="space-between center">
+    <h2>Add New Card</h2>
+    <button
+        mat-icon-button
+        (click)="matDialogRef.close()"
+        aria-label="Close dialog"
+        fxLayoutAlign="start center"
+        fxFlex="8"
+      >
+        <mat-icon aria-hidden="false" matTooltip="Close">close</mat-icon>
+      </button>
+  </div>
+<mat-dialog-content class="mat-typography">
+<form [formGroup]="cardForm" fxLayout="column" fxLayoutAlign="center start">
+  <div class="form-field" fxLayout="row" fxLayoutAlign="start center">
+    <mat-form-field appearance="outline">
+      <mat-label>Enter Debit/Credit Card Number</mat-label>
+      <input
+        name="card_number"
+        formControlName="card_number"
+        maxlength="19"
+        autocomplete="off"
+        matInput
+        NumberOnly
+        CreditCardNumber
+      />
+      <img *ngIf="cardForm.get('card_number').value && cardForm.get('card_number').value[0] !== '3'" src="assets/visa.png" />
+      <img *ngIf="cardForm.get('card_number').value && cardForm.get('card_number').value[0] === '3'" src="assets/american-express.png" />
+
+      <mat-error *ngIf="cardForm.get('card_number').hasError('required')">
+        Card Number is required.
+      </mat-error>
+      <mat-error *ngIf="cardForm.get('card_number').hasError('minlength')">
+        Card Number should have minimum 16 digits.
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <div class="form-field" fxLayoutAlign="start center" fxLayoutGap="10px" fxFlex>
+    <div class="child-field" fxLayout="row" fxLayoutAlign="start center">
+      <mat-form-field appearance="outline">
+        <mat-label>Expiry Month</mat-label>
+        <mat-select formControlName="expiry_month">
+          <mat-option *ngFor="let month of constants.monthsList" [value]="month">{{month}}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="cardForm.get('expiry_month').hasError('required')">
+          Expiry Month is required.
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="child-field" fxLayout="row" fxLayoutAlign="start center">
+      <mat-form-field appearance="outline">
+        <mat-label>Expiry Year</mat-label>
+        <mat-select formControlName="expiry_year">
+          <mat-option *ngFor="let year of constants.yearsList" [value]="year">{{year}}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="cardForm.get('expiry_year').hasError('required')">
+          Expiry Year is required.
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="child-field" fxLayout="row" fxLayoutAlign="start center">
+      <mat-form-field appearance="outline">
+        <mat-label>CVV</mat-label>
+        <input
+          name="cvv"
+          formControlName="cvv"
+          type="password"
+          maxlength="3"
+          autocomplete="off"
+          matInput
+          NumberOnly
+        >
+        <img class="input-img" src="assets/cvv.png" />
+        <mat-error *ngIf="cardForm.get('cvv').hasError('required')">
+          CVV is required.
+        </mat-error>
+        <mat-error *ngIf="cardForm.get('cvv').hasError('minlength')">
+          CVV should have minimum 3 digits.
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+</form>
+</mat-dialog-content>
+<mat-dialog-actions class="action-btns" fxLayoutAlign="start">
+  <button class="add-card" [disabled]="!cardForm.valid" mat-raised-button color="primary" (click)="addCard()">Add Card</button>
+</mat-dialog-actions>
+</div>

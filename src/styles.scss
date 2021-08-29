@@ -1,0 +1,18 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+.success-alert {
+  color: #00B54A !important;
+  box-shadow: none!important;
+  border: 1px solid #00B54A ;
+  position: relative;
+  background: #D9F6E4 !important;
+  box-shadow: none;
+.mat-simple-snackbar-action {
+      color: #92dbff !important;
+      display: none;
+}
+}
